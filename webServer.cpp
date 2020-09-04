@@ -13,13 +13,13 @@ using namespace std;
 void handle_connect(int r_acc)
 {
     //接收客户端法来的信息
-    char buff[1024*50] = {0};
+    char buff[1024*50];
     int r_con = read(r_acc, buff, sizeof buff);
     if(r_con==-1) cout << "读取失败" << endl;
     else cout << "接收到客户端发送的请求: " << buff << endl; 
 
     //解析客户端请求的文件名
-    char filename[20] = {0};
+    char filename[20];
     sscanf(buff, "GET /%s", filename);
     cout << "解析出的文件名为: " << filename << endl;
 
@@ -31,7 +31,7 @@ void handle_connect(int r_acc)
         mime = "image/png";
     }
 
-    char response[1024*50] = {0};
+    char response[1024*50];
     sprintf(response, "HTTP/1.1 200 ok\r\nContent-Type: %s\r\n\r\n", mime);
 
     int responseLen = strlen(response);
