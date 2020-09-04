@@ -1,6 +1,6 @@
 # webServer
 
-run server:  
+run server  
 ./webServer.exe  
   
 open ie browser  
